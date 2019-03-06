@@ -1,0 +1,11 @@
+int main()
+{
+	const int sizeof_groceryList = 10;
+	string arrayGrocery[sizeof_groceryList] = { "potato", "milk", "eggs","juice","honey", "cheese", "water","limon", "apples", "rice" };
+
+	for (int x = 0; x < sizeof_groceryList; ++x)
+		cout << arrayGrocery[x] << endl;
+
+
+		return 0;
+}
