@@ -1,0 +1,78 @@
+// Groceries.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
+#include "pch.h"
+#include <iostream>
+
+using namespace std;
+class GroceryItem
+
+{
+private:
+	int stockNum;
+	double priceEach;
+	int quantity;
+	double totalValue;
+	void setStockNum();
+	void setPriceEach();
+	void setQuantity();
+	void calculateTotalValue();
+public:
+	void dataEntry();
+	void displayGroceryItem();
+};
+void GroceryItem::dataEntry()
+{
+	setStockNum();
+	setPriceEach();
+	setQuantity();
+	calculateTotalValue();
+}
+void GroceryItem::setStockNum()
+{
+	const int LOW = 1000;
+	const int HIGH = 9999;
+	cout << "Enter stock number - use 4 digits ";
+	cin >> stockNum;
+	while (stockNum < LOW || stockNum > HIGH)
+	{
+		cout << "Use 4 digits please ";
+		cin >> stockNum;
+	}
+}
+void GroceryItem::setPriceEach()
+{
+	cout << "Enter price each ";
+	cin >> priceEach;
+	while (priceEach < 0)
+	{
+		cout << "Price must be non-negative ";
+		cin >> priceEach;
+	}
+}
+void GroceryItem::setQuantity()
+{
+	cout << "Enter quantity in stock ";
+	cin >> quantity;
+	while (quantity < 0)
+	{
+		cout << "Quantity must be non-negative ";
+		cin >> quantity;
+	}
+}
+void GroceryItem::calculateTotalValue()
+{
+	totalValue = quantity * priceEach;
+}
+void GroceryItem::displayGroceryItem()
+{
+	cout << "ID #" << stockNum << " Price: $" << priceEach << endl;
+	cout << "Quantity in stock " << quantity << "  Value $" << totalValue << endl;
+}
+int main()
+{
+	GroceryItem oneItem;
+	oneItem.dataEntry();
+	oneItem.displayGroceryItem();
+	return 0;
+}
